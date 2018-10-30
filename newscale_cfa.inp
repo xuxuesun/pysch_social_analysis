@@ -1,0 +1,11 @@
+TITLE:	this is an example of a CFA with
+	3 categorical factor indicators
+DATA:	FILE IS xxx;
+VARIABLE:	NAMES ARE y1-y40;
+	CATEGORICAL ARE y1-y40;
+    USEVARIABLES ARE y1-y3,y9,y15-y19,y22,y31-y32,y34-y36,y38-y40;
+ANALYSIS:
+    ESTIMATOR=MLR;
+MODEL:	f1 BY y1-y3,y9;
+	f2 BY y15-y19,y22,y31-y32;
+    f3 BY y34-y36,y38-y40;

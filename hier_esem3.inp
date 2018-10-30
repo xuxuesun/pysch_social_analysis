@@ -1,0 +1,21 @@
+TITLE:	hierarchical ESEM rescaled
+DATA:	FILE IS xxxx;
+VARIABLE:	NAMES ARE y1-y40;
+	CATEGORICAL ARE y1-y40;
+    USEVARIABLES ARE y1-y3,y9,y15-y19,y22,y31-y32,y34-y36,y38-y40;
+MODEL:	
+    f1 BY y1-y3,y9,y15-y19~0,
+    y22~0,y31-y32~0,y34-y36~0,y38-y40~0 (*1);
+    f2 BY y1-y3~0,y9~0,y15-y19,y22,
+    y31-y32~0,y34-y36~0,y38-y40~0 (*1);
+    f3 BY y1-y3~0,y9~0,y15-y19~0,y22~0,y31-y32~0,
+    y34-y36,y38-y40 (*1);
+ANALYSIS:
+    rotation=target;
+    ESTIMATOR=WLSMV;
+OUTPUT:
+    TECH4;
+    TECH5;    
+Savedata:
+    file is ESEM_new1.txt;
+    save = fscores;
